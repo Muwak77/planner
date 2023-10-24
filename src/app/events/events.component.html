@@ -1,0 +1,7 @@
+<div class="eventlist">
+  <div *ngFor="let calendarUser of calendarUsers">{{calendarUser.name}}    
+  </div>
+  <div class="outerentry" *ngFor="let calendarEvent of calendarEvents">
+    <app-evententry [calendarEvent]="calendarEvent"></app-evententry>
+  </div>
+</div>

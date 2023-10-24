@@ -1,0 +1,17 @@
+<hr />
+<label for="name">Eventname</label>
+<input id="name" [(ngModel)]="calendarEvent.name" placeholder="name" />
+<label for="dateTime">Datum</label>
+<mat-form-field>
+  <mat-label>Choose a date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [(ngModel)]="calendarEvent.dateTime"
+  />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<button type="button" class="delete" title="delete hero"
+(click)="delete(calendarEvent)">x</button>
