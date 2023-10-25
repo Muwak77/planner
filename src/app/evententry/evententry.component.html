@@ -3,7 +3,7 @@
   <h2>{{ calendarEvent.dateTime | dateTimeFormat }}</h2>
   <button (click)="toggleEdit()">Edit</button>
   <div *ngIf="editMode">
-    <app-editevententry [calendarEvent]="calendarEvent"></app-editevententry>
+    <app-editevententry [calendarEvent]="calendarEvent" [calendarEvents]="calendarEvents"></app-editevententry>
   </div>
   
 </div>

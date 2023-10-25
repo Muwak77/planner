@@ -8,6 +8,7 @@ import { CalendarEvent } from '../models/CalendarEvent';
 })
 export class EvententryComponent {
   editMode=false;
+  @Input () calendarEvents:CalendarEvent[]=[];
   @Input () calendarEvent:CalendarEvent= {
     id:0,
     name:'',

@@ -15,7 +15,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService } from './mock-data.service';
 import { EvententryComponent } from './evententry/evententry.component';
 import { EditevententryComponent } from './editevententry/editevententry.component';
 
@@ -30,8 +29,7 @@ import { EditevententryComponent } from './editevententry/editevententry.compone
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule,
-    InMemoryWebApiModule.forRoot(MockDataService)
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
