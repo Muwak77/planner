@@ -8,7 +8,7 @@ import { CalendarDataService } from '../calendar-data.service';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css'],
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit{
   constructor(private calendarDataService:CalendarDataService) {}
 
   calendarUsers: CalendarUser[] = [];
@@ -21,9 +21,15 @@ export class EventsComponent {
   ngOnInit() {
     this.getUsers();
     this.getEvents();
-    this.getUpdteChecker();
-    
+    this.getUpdteChecker();    
   }
+
+  addEvent():void {
+    this.calendarDataService.addEvent().subscribe(next=>{      
+      this.calendarDataService.updateValue("XXX");
+    });
+  }
+
 
   getUpdteChecker():void{
     this.calendarDataService.getValueObservable().subscribe(value => {

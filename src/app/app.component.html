@@ -1,6 +1,15 @@
-<header>Eventkalender</header>
+<header>Eventkalender
+    
+    <button *ngIf="user.id>0;"  type="button" class="logout" title="Logout" (click)="logout()">
+        Logout
+      </button>
+</header>
 <main>
-<app-events class="test"></app-events>
-</main>
+  <div *ngIf="user.id>0; else loginComponent">
+    <app-events class="test"></app-events>
+  </div>
 
-  
+  <ng-template #loginComponent>
+    <app-login></app-login>
+  </ng-template>
+</main>

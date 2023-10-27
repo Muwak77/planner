@@ -3,14 +3,14 @@
     flex-wrap: wrap;
 }
 .outerentry {
-    background-color: rgb(27, 82, 27);
-    width: 100%;
-    margin: 0 0 10px 0;
-    border-left:solid 1px #7c9200;
-    border-right:solid 1px #adb489;
-    border-top:solid 1px #7c9200;
-    border-bottom:solid 1px #adb489;
+    background-color: rgb(27, 82, 27);    
+    border-left: solid 1px #7c9200;
+    border-right: solid 1px #adb489;
+    border-top: solid 1px #7c9200;
+    border-bottom: solid 1px #adb489;
     border-radius: 3px;
     padding: 10px;
-    ;
+    max-width: 400px;
+    width: 400px;
+    margin: 5px;
 }

@@ -1,5 +1,7 @@
+import { CalendarReply } from "./CalendarReply";
 export interface CalendarEvent {
     id: number;
     name: string,   
-    dateTime:Date
+    dateTime:Date,
+    replys:CalendarReply[]
   }

@@ -1,0 +1,13 @@
+<div class="loginform">
+  <div class="inputwrapper">
+    <label for="username">Benutzername</label>
+    <input [(ngModel)]="username" type="text" name="username" id="username" />
+  </div>
+  <div class="inputwrapper">
+    <label  for="password">Passwort</label>
+    <input [(ngModel)]="password" type="password" name="password" id="password" />
+  </div>
+  <div class="buttonwrapper">
+    <button (click)=" checkPassword()">Login</button>
+</div>
+</div>

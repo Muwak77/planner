@@ -1,4 +1,6 @@
 export interface CalendarUser {
-    id: number;
+    id: number,
     name: string,   
+    password:string,
+    admin:boolean
   }

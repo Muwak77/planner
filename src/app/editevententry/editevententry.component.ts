@@ -14,6 +14,7 @@ export class EditevententryComponent {
     id: 0,
     name: '',
     dateTime: new Date('1970-01-01'),
+    replys:[]
   };
 
   delete(calendarEvent: CalendarEvent): void {

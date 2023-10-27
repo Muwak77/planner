@@ -1,7 +1,8 @@
 <div class="innerentry">
   {{calendarEvent.name}}
-  <h2>{{ calendarEvent.dateTime | dateTimeFormat }}</h2>
-  <button (click)="toggleEdit()">Edit</button>
+  <h2>{{ calendarEvent.dateTime | dateTimeFormat}}</h2>
+  <app-replytoevent [calendarEvent]="calendarEvent"></app-replytoevent>
+  <button *ngIf="currentUser?.admin" (click)="toggleEdit()">Edit</button>
   <div *ngIf="editMode">
     <app-editevententry [calendarEvent]="calendarEvent" [calendarEvents]="calendarEvents"></app-editevententry>
   </div>

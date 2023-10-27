@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
@@ -17,9 +18,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { EvententryComponent } from './evententry/evententry.component';
 import { EditevententryComponent } from './editevententry/editevententry.component';
+import { LoginComponent } from './login/login.component';
+import { ReplytoeventComponent } from './replytoevent/replytoevent.component';
 
 @NgModule({
-  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe, EvententryComponent, EditevententryComponent],
+  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe, EvententryComponent, EditevententryComponent, LoginComponent, ReplytoeventComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
