@@ -33,7 +33,6 @@ export class EventsComponent implements OnInit{
 
   getUpdteChecker():void{
     this.calendarDataService.getValueObservable().subscribe(value => {
-      console.log('Neuer Wert:', value);
       this.getEvents();
     });
   }
@@ -43,7 +42,23 @@ export class EventsComponent implements OnInit{
   }
 
   getEvents():void {
-    this.calendarDataService.getEvents().subscribe((calendarEvents) => (this.calendarEvents = calendarEvents));
+    this.calendarDataService.getEvents().subscribe((calendarEvents) => {
+      this.calendarEvents = calendarEvents;
+
+      // Ereignisse nach DateTime in absteigender Reihenfolge sortieren
+      this.calendarEvents.sort((a, b) => {
+        if(typeof a.dateTime === "string") {
+          a.dateTime = new Date(a.dateTime);
+        }
+        
+        if(typeof b.dateTime === "string") {
+          b.dateTime = new Date(b.dateTime);
+        }
+        
+        return b.dateTime.getTime() - a.dateTime.getTime()
+      });
+    });
+
   }
 
 }

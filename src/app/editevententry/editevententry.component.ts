@@ -17,18 +17,14 @@ export class EditevententryComponent {
     replys:[]
   };
 
-  delete(calendarEvent: CalendarEvent): void {
-    console.log(this.calendarEvents);
-    this.calendarEvents = this.calendarEvents.filter((h) => h !== calendarEvent);
-    console.log(this.calendarEvent);
-    
+  delete(calendarEvent: CalendarEvent): void {    
+    this.calendarEvents = this.calendarEvents.filter((h) => h !== calendarEvent);    
     this.calendarDataService.deleteEvent(this.calendarEvent.id).subscribe(next=>{      
       this.calendarDataService.updateValue("XXX");
     });
   }
 
   update(calendarEvent:CalendarEvent):void {
-    console.log(calendarEvent)
     this.calendarDataService.updateEvent(calendarEvent).subscribe(next=>{      
       this.calendarDataService.updateValue("XXX");
     });

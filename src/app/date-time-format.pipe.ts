@@ -11,7 +11,7 @@ export class DateTimeFormatPipe implements PipeTransform {
     }
     
     if (value && value instanceof Date) {
-      console.log(value);
+    
 
       const day = value.getDate();
       const month = value.getMonth() + 1; // Monate sind nullbasiert, daher +1

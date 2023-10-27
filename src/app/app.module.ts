@@ -20,9 +20,10 @@ import { EvententryComponent } from './evententry/evententry.component';
 import { EditevententryComponent } from './editevententry/editevententry.component';
 import { LoginComponent } from './login/login.component';
 import { ReplytoeventComponent } from './replytoevent/replytoevent.component';
+import { EventreplysComponent } from './eventreplys/eventreplys.component';
 
 @NgModule({
-  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe, EvententryComponent, EditevententryComponent, LoginComponent, ReplytoeventComponent],
+  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe, EvententryComponent, EditevententryComponent, LoginComponent, ReplytoeventComponent, EventreplysComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

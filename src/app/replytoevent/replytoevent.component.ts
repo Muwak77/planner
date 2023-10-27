@@ -38,7 +38,6 @@ export class ReplytoeventComponent implements OnInit{
       myReply={user:this.currentUser.id,reply:ReplyType.maybe}
       this.calendarEvent.replys.push(myReply);
     }
-    console.log(this.calendarEvent);
     return(myReply.reply)
     
   }
@@ -52,7 +51,6 @@ export class ReplytoeventComponent implements OnInit{
     });
 
     this.currentState=this.getMyState();
-    console.log(this.calendarEvent);
     this.calendarDataService.updateEvent(this.calendarEvent).subscribe(next=>{      
       
     });

@@ -1,0 +1,23 @@
+.replylist {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.replylist .reply {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.replylist .reply .username {
+    width: 50%;
+    background-color: #00000088;
+    padding: 2px;
+    box-sizing: border-box;
+}
+.replylist .reply .userreply {
+    width: 49%;
+    background-color: #00000088;
+    box-sizing: border-box;
+    padding: 2px
+}

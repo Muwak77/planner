@@ -57,8 +57,9 @@ export class CalendarDataService {
     return of(users);  
   }
   
+  
   getEvents(): Observable<CalendarEvent[]> {
-    return this.http.get<CalendarEvent[]>(`${this.eventUrl}`);
+    return this.http.get<CalendarEvent[]>(`${this.eventUrl}`); 
   }
 
   deleteEvent(id: number): Observable<CalendarEvent> {
@@ -128,7 +129,7 @@ export class CalendarDataService {
   }
 
   log(message: string) {
-    console.log(`${message}`);
+    //console.log(`${message}`);
   }
 
   async login(username:string,password:string):Promise<boolean>{
