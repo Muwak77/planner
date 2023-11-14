@@ -11,9 +11,9 @@ import { catchError, map, tap,delay } from 'rxjs/operators';
 })
 
 export class CalendarDataService {
-  
-  eventUrl:string='/echo/events/';
-  userUrl:string='/echo/users/';
+  baseUrl:string ='http://localhost:8081'
+  eventUrl:string=this.baseUrl+'/events/';
+  userUrl:string=this.baseUrl+ '/users/';
 
   constructor(private http: HttpClient) {}
   
@@ -42,7 +42,7 @@ export class CalendarDataService {
 
   getUsers(): Observable<CalendarUser[]> {
     const users:CalendarUser[]=[
-      {id:1,
+      {id:702,
       name:"ingo",
       password:"pro1",
       admin:true
@@ -57,13 +57,12 @@ export class CalendarDataService {
     return of(users);  
   }
   
-  
   getEvents(): Observable<CalendarEvent[]> {
     return this.http.get<CalendarEvent[]>(`${this.eventUrl}`); 
   }
 
   deleteEvent(id: number): Observable<CalendarEvent> {
-    const url = `${this.eventUrl}?id=${id}`;
+    const url = `${this.eventUrl}${id}`;
 
     return this.http.delete<CalendarEvent>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted event id=${id}: ${url}`)),
@@ -71,22 +70,10 @@ export class CalendarDataService {
     );
     
   }
-  getGroups():Observable<CalendarGroup[]> {
-    const groups:CalendarGroup[]= [
-        {
-          id:0,
-          name:"DSA-Runde",
-          users:[]
-        }
-    ]
-    
-    return of(groups).pipe(delay(500));
-  }
-  
-
+ 
   addEvent(): Observable<CalendarEvent> {
     const url = `${this.eventUrl}`;
-    const eventTemplate:CalendarEvent={id:0,name:"",dateTime:new Date(),replys:[]}
+    const eventTemplate:CalendarEvent={id:0,name:"",dateTime:new Date(),replies:[]}
 
     return this.http.post<CalendarEvent>(url,eventTemplate, this.httpOptions).pipe(
       tap((_) => this.log(`new event: ${url}`)),
@@ -95,7 +82,7 @@ export class CalendarDataService {
   }
 
   updateEvent(event:CalendarEvent):Observable<CalendarEvent> {
-    const url = `${this.eventUrl}?id=${event.id}`;
+    const url = `${this.eventUrl}${event.id}`;
       
     return this.http.put<CalendarEvent>(url, event,this.httpOptions).pipe(
       tap((_) => this.log(`deleted event id=${event.id}: ${url}`)),
@@ -104,7 +91,7 @@ export class CalendarDataService {
   }
 
   getEvent(id: number): Observable<CalendarEvent> {
-    const url = `${this.eventUrl}/${id}`;
+    const url = `${this.eventUrl}${id}`;
 
     return this.http
       .get<CalendarEvent>(url)

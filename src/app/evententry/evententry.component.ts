@@ -21,7 +21,7 @@ export class EvententryComponent implements OnInit {
     id:0,
     name:'',
     dateTime:new Date("1971-01-01 15:30"),
-    replys:[]    
+    replies:[]    
     
   }
 

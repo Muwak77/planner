@@ -22,8 +22,5 @@ export class EventreplysComponent implements OnInit {
     this.getUsers()
   }
 
-  getUserName(userId: number): string {
-    const user = this.calendarUsers?.find(user => user.id === userId);
-    return user ? user.name : 'Unbekannter Benutzer';
-  }
+
 }

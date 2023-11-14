@@ -10,7 +10,7 @@ import { repeatWhen } from 'rxjs';
   styleUrls: ['./replytoevent.component.css']
 })
 export class ReplytoeventComponent implements OnInit{
-  @Input () calendarEvent:CalendarEvent={id:0,name:"",dateTime:new Date(),replys:[]};  
+  @Input () calendarEvent:CalendarEvent={id:0,name:"",dateTime:new Date(),replies:[]};  
   currentUser:CalendarUser={id:0,name:"",password:"",admin:false};
   currentState="";
 
@@ -31,20 +31,21 @@ export class ReplytoeventComponent implements OnInit{
 
   getMyState():string {
 
-    let myReply = this.calendarEvent.replys.find(item => item.user === this.currentUser?.id);
+    let myReply = this.calendarEvent.replies.find(item => item.user === this.currentUser);
     
     //No reply yet?
     if(myReply===undefined) {
-      myReply={user:this.currentUser.id,reply:ReplyType.maybe}
-      this.calendarEvent.replys.push(myReply);
+      myReply={user:this.currentUser,reply:ReplyType.maybe}
+      this.calendarEvent.replies.push(myReply);
     }
     return(myReply.reply)
     
   }
 
   setMyState(newState:ReplyType) {
-    this.calendarEvent.replys = this.calendarEvent.replys.map(item => {
-      if (this.currentUser.id === item.user) {
+    console.log(this.calendarEvent)
+    this.calendarEvent.replies = this.calendarEvent.replies.map(item => {
+      if (this.currentUser === item.user) {
         return { ...item, reply: newState };
       }
       return item;

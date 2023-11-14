@@ -3,5 +3,5 @@ export interface CalendarEvent {
     id: number;
     name: string,   
     dateTime:Date,
-    replys:CalendarReply[]
+    replies:CalendarReply[]
   }

@@ -1,7 +1,7 @@
 <div class="replylist">
-<div class="reply" *ngFor="let reply of calendarEvent?.replys">
+<div class="reply" *ngFor="let reply of calendarEvent?.replies">
     <div class="username">
-        {{ getUserName(reply.user) }}
+        {{ reply.user?.name }}
     </div>
     <div class="userreply">
         {{reply.reply}}
