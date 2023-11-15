@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable ,OnInit} from '@angular/core';
 import { CalendarEvent } from './models/CalendarEvent';
 import { CalendarUser } from './models/CalendarUser';
 import { CalendarGroup } from './models/CalendarGroup';
@@ -6,11 +6,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of ,BehaviorSubject} from 'rxjs';
 import { catchError, map, tap,delay } from 'rxjs/operators';
 
+
+
 @Injectable({
   providedIn: 'root',
 })
 
-export class CalendarDataService {
+export class CalendarDataService implements OnInit {
+
+
+  ngOnInit(): void {
+      this.getUsers().subscribe((calendarUsers) =>
+      {
+      this.users=calendarUsers;
+    })
+    console.log("initializing user data");
+  }
   baseUrl:string ='http://localhost:8081'
   eventUrl:string=this.baseUrl+'/events/';
   userUrl:string=this.baseUrl+ '/users/';
@@ -19,7 +30,7 @@ export class CalendarDataService {
   
   //#region updateChecker
   private updateChecker = new BehaviorSubject<string>('Initialer Wert');
-
+  
   updateValue(newValue: string) {
     this.updateChecker.next(newValue);
   }
@@ -30,7 +41,7 @@ export class CalendarDataService {
   //#endregion
 
   private currentUser = new BehaviorSubject<CalendarUser>({id:0,name:"",password:"",admin:false});
-  
+ private users?: CalendarUser[]
   
   getCurrentUser():Observable<CalendarUser> {
     return this.currentUser;  
@@ -41,20 +52,8 @@ export class CalendarDataService {
   }
 
   getUsers(): Observable<CalendarUser[]> {
-    const users:CalendarUser[]=[
-      {id:702,
-      name:"ingo",
-      password:"pro1",
-      admin:true
-
-      },
-      {id:2,
-      name:"peter",
-      password:"pro1",
-      admin:false
-      },
-    ]
-    return of(users);  
+    console.log("Retrieving users From: "+this.userUrl);
+    return this.http.get<CalendarUser[]>(`${this.userUrl}`);     
   }
   
   getEvents(): Observable<CalendarEvent[]> {
@@ -83,7 +82,7 @@ export class CalendarDataService {
 
   updateEvent(event:CalendarEvent):Observable<CalendarEvent> {
     const url = `${this.eventUrl}${event.id}`;
-      
+    console.log(event);
     return this.http.put<CalendarEvent>(url, event,this.httpOptions).pipe(
       tap((_) => this.log(`deleted event id=${event.id}: ${url}`)),
       catchError(this.handleError<CalendarEvent>('deleteEvent')),      
@@ -119,18 +118,8 @@ export class CalendarDataService {
     //console.log(`${message}`);
   }
 
-  async login(username:string,password:string):Promise<boolean>{
-    let result=false;
-    const users = await this.getUsers().toPromise();
-    users?.forEach((x)=>{
-      if(x.name==username && x.password==password) {
-        this.setCurrentUser(x);
-        result=true;
-      }
-    })    
-    return result;
-  }
- 
+  
+
   logout(){
       
     this.setCurrentUser({id:0,name:"",password:"",admin:false});      
