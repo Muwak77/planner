@@ -6,14 +6,10 @@
   </tr>
   <tr class="outerentry" *ngFor="let userEntry of calendarUsers">
     <td>
-      <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="userEntry.name" placeholder="" />
-      </mat-form-field>
+        <input class="textfield" type="text" [(ngModel)]="userEntry.name" placeholder="" />        
     </td>
     <td>
-      <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="userEntry.password" placeholder="" />
-      </mat-form-field>
+        <input class="textfield" type="text" [(ngModel)]="userEntry.password" placeholder="" />
     </td>
     <td>
         <mat-checkbox [(ngModel)]="userEntry.admin">Admin</mat-checkbox>
@@ -38,3 +34,4 @@
     </td>
   </tr>
 </table>
+<button type="button" class="addnew" title="Neuen Benutzer anlegen" (click)="addUser()">Neuer Benutzer</button>

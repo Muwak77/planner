@@ -15,6 +15,7 @@ export class UserlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+    this.getUpdteChecker();    
   }
 
   getUsers(): void {
@@ -25,7 +26,7 @@ export class UserlistComponent implements OnInit {
 
   delete(calendarUser: CalendarUser): void {
     this.calendarUsers = this.calendarUsers?.filter((h) => h !== calendarUser);
-    this.calendarDataService.deleteEvent(calendarUser.id).subscribe((next) => {
+    this.calendarDataService.deleteUser(calendarUser.id).subscribe((next) => {
       this.calendarDataService.updateValue('XXX');
     });
   }
@@ -33,6 +34,17 @@ export class UserlistComponent implements OnInit {
   update(calendarUser: CalendarUser): void {
     this.calendarDataService.updateUser(calendarUser).subscribe((next) => {
       this.calendarDataService.updateValue('XXX');
+    });
+  }
+
+  addUser():void {
+    this.calendarDataService.addUser().subscribe(next=>{      
+      this.calendarDataService.updateValue("XXX");
+    });
+  }
+  getUpdteChecker():void{
+    this.calendarDataService.getValueObservable().subscribe(value => {
+      this.getUsers();
     });
   }
 }
