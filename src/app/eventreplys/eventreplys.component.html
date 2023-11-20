@@ -1,10 +1,12 @@
-<div class="replylist">
+<h3>Antworten:</h3>
+<div class="replylist">    
 <div class="reply" *ngFor="let reply of calendarEvent?.replies">
     <div class="username">
-        {{ reply.user?.name }} ({{ reply.user?.id }})
+        {{ reply.user.name }}
     </div>
     <div class="userreply">
-        {{reply.reply}}
+    
+        {{reply.reply| replyFormat}}
     </div>
       
   </div>

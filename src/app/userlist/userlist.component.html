@@ -1,0 +1,40 @@
+<table class="userlist">
+  <tr>
+    <td>Name</td>
+    <td>Passwort</td>
+    <td>Admin</td>
+  </tr>
+  <tr class="outerentry" *ngFor="let userEntry of calendarUsers">
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="userEntry.name" placeholder="" />
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="userEntry.password" placeholder="" />
+      </mat-form-field>
+    </td>
+    <td>
+        <mat-checkbox [(ngModel)]="userEntry.admin">Admin</mat-checkbox>
+    </td>
+    <td>
+      <button
+        type="button"
+        class="delete"
+        title="delete Event"
+        (click)="delete(userEntry)"
+      >
+        x
+      </button>
+      <button
+        type="button"
+        class="update"
+        title="update Event"
+        (click)="update(userEntry)"
+      >
+        Speichern
+      </button>
+    </td>
+  </tr>
+</table>

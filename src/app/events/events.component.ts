@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CalendarEvent } from '../models/CalendarEvent';
 import { CalendarUser } from '../models/CalendarUser';
 import { CalendarDataService } from '../calendar-data.service';
@@ -10,7 +10,7 @@ import { CalendarDataService } from '../calendar-data.service';
 })
 export class EventsComponent implements OnInit{
   constructor(private calendarDataService:CalendarDataService) {}
-
+  @Input() user?: CalendarUser;
   calendarUsers: CalendarUser[] = [];
   calendarEvents: CalendarEvent[] = [];  
 
@@ -22,6 +22,7 @@ export class EventsComponent implements OnInit{
     this.getUsers();
     this.getEvents();
     this.getUpdteChecker();    
+    
   }
 
   addEvent():void {

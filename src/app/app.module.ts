@@ -10,8 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { DateTimeFormatPipe } from './date-time-format.pipe';
+import { ReplyFormatPipe } from './reply-format-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -21,9 +23,11 @@ import { EditevententryComponent } from './editevententry/editevententry.compone
 import { LoginComponent } from './login/login.component';
 import { ReplytoeventComponent } from './replytoevent/replytoevent.component';
 import { EventreplysComponent } from './eventreplys/eventreplys.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
-  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe, EvententryComponent, EditevententryComponent, LoginComponent, ReplytoeventComponent, EventreplysComponent],
+  declarations: [AppComponent, EventsComponent, DateTimeFormatPipe,ReplyFormatPipe, EvententryComponent, EditevententryComponent, LoginComponent, ReplytoeventComponent, EventreplysComponent, UserlistComponent, UserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +35,7 @@ import { EventreplysComponent } from './eventreplys/eventreplys.component';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule

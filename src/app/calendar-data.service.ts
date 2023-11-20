@@ -55,7 +55,35 @@ export class CalendarDataService implements OnInit {
     console.log("Retrieving users From: "+this.userUrl);
     return this.http.get<CalendarUser[]>(`${this.userUrl}`);     
   }
+
+  updateUser(user:CalendarUser):Observable<CalendarUser> {
+    const url = `${this.userUrl}${user.id}`;    
+    return this.http.put<CalendarUser>(url, user,this.httpOptions).pipe(
+      tap((_) => this.log(`updated user id=${user.id}: ${url}`)),
+      catchError(this.handleError<CalendarUser>('updateUser')),      
+    );
+  }
   
+  addUser(): Observable<CalendarUser> {
+    const url = `${this.userUrl}`;
+    const userTemplate:CalendarUser={id:0,name:"",admin:false,password:""}
+
+    return this.http.post<CalendarUser>(url,userTemplate, this.httpOptions).pipe(
+      tap((_) => this.log(`new iser: ${url}`)),
+      catchError(this.handleError<CalendarUser>('adduser')),      
+    );
+  }
+
+  deleteUser(id: number): Observable<CalendarEvent> {
+    const url = `${this.eventUrl}${id}`;
+
+    return this.http.delete<CalendarEvent>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted event id=${id}: ${url}`)),
+      catchError(this.handleError<CalendarEvent>('deleteUser')),      
+    );
+    
+  }
+
   getEvents(): Observable<CalendarEvent[]> {
     return this.http.get<CalendarEvent[]>(`${this.eventUrl}`); 
   }

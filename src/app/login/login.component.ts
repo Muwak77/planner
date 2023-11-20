@@ -37,9 +37,5 @@ export class LoginComponent implements OnInit{
         this.calendarDataService.setCurrentUser(x);
       }
     })    
-
-
   }
- 
-  
 }

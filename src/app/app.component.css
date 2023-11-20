@@ -1,0 +1,20 @@
+header {
+    width:80%;
+    max-width: 1000px;
+    background-color: rgb(27, 82, 27);    
+    border-left: solid 1px #7c9200;
+    border-right: solid 1px #adb489;
+    border-top: solid 1px #7c9200;
+    border-bottom: solid 1px #adb489;
+    border-radius:  0 0 10px 10px;
+    padding: 10px;    
+    margin: -1px auto 5px auto;
+}
+
+main {
+    width:80%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 5px auto;
+}

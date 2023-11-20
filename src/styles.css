@@ -3,6 +3,19 @@
 html,
 body {
   height: 100%;
+  
+}
+
+header,main,html, body, ul, li, a, p, div, span,h1,h2,h3,h4 {
+  color: #ffc000;
+  font-family: serif;
+}
+
+header {
+  font-size: 24px;
+  line-height: 30px;
+  text-shadow: 1px 1px 2px #000000;
+  text-align: center;
 }
 body {
   margin: 0;
@@ -15,4 +28,44 @@ main {
     margin: 2% 10% 0 10%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+@keyframes logo-move {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+nav {
+  width:100%;
+}
+button,.button{
+  display: inline-block;
+margin: 10px auto;
+min-width: 100px;
+letter-spacing: 2px;
+border-radius: 8px;
+font-family: serif;
+color: #ffc000;
+font-size: 18px;
+font-weight: 400;
+text-shadow: 0 1px 3px #000;
+text-align: center;
+padding: 5px 10px;
+background: radial-gradient(circle, #8b0000, #8b0000);
+border-top: 4px ridge #ffb000;
+border-left: 4px groove #ffb000;
+border-right: 4px ridge #ffb000;
+border-bottom: 4px groove #ffb000;
+box-shadow: inset 0px 0px 5px 3px rgba(1,1,1,0.3);
+cursor: pointer;
+}
+
+button:hover,.button:hover{
+background: radial-gradient(circle, #e52b2b, #8b0000);
+box-shadow: 0px 0 5px 5px rgba(255,255,255,0.2)
+}
+
+button:active,.button:active{
+background: radial-gradient(circle, #ec6a6a, #e52b2b);
+box-shadow: 0px 0 5px 5px rgba(255,255,255,0.2)
 }

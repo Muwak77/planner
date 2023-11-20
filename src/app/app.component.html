@@ -1,14 +1,15 @@
-<header>Eventkalender
-    
-    <button *ngIf="user.id>0;"  type="button" class="logout" title="Logout" (click)="logout()">
-        Logout
-      </button>
+<header>Eventkalender        
 </header>
 <main>
-  <div *ngIf="user.id>0; else loginComponent">
-    <app-events class="test"></app-events>
+  <nav>
+    <button *ngIf="user.id>0;"  type="button" class="logout" title="Logout" (click)="logout()">Logout</button>  
+    <a class="button" routerLink="/users">Benutzer</a>
+    <a class="button" routerLink="/events">Events</a>
+  </nav>
+  <div *ngIf="user.id>0; else loginComponent">    
+    <router-outlet></router-outlet>
   </div>
-
+  
   <ng-template #loginComponent>
     <app-login></app-login>
   </ng-template>
